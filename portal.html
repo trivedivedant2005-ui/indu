@@ -45,88 +45,86 @@
     <section class="portal-section">
         <div class="container">
             <div class="portal-content">
-                <!-- Login Form -->
-                <div class="login-container">
-                    <div class="login-box">
-                        <h2 id="formTitle">Student <span>Login</span></h2>
-                        <div id="loginMessage"></div>
-                        <!-- Login Form -->
-                        <form id="loginForm" class="login-form">
-                            <div class="form-group">
-                                <label for="rollNumber">Roll Number / Enrollment ID</label>
-                                <input type="text" id="rollNumber" placeholder="Enter your roll number" required>
-                            </div>
-                            <div class="form-group" id="passwordRow">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" placeholder="Enter your password" required>
-                            </div>
-                            <div class="form-options">
-                                <label>
-                                    <input type="checkbox" id="rememberMe"> Remember me
-                                </label>
-                                <a href="#" class="forgot-password">Forgot Password?</a>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        </form>
-                        <!-- Registration Form (hidden by default) -->
-                        <form id="registerForm" class="login-form" style="display:none;">
-                            <div class="form-group">
-                                <label for="regRollNumber">Roll Number</label>
-                                <input type="text" id="regRollNumber" placeholder="Enter your roll number" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="regEnrollmentId">Enrollment ID</label>
-                                <input type="text" id="regEnrollmentId" placeholder="Enter your enrollment ID" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="regFirstName">First Name</label>
-                                <input type="text" id="regFirstName" placeholder="Enter your first name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="regLastName">Last Name</label>
-                                <input type="text" id="regLastName" placeholder="Enter your last name">
-                            </div>
-                            <div class="form-group">
-                                <label for="regEmail">Email</label>
-                                <input type="email" id="regEmail" placeholder="Enter your email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="regPhone">Phone</label>
-                                <input type="text" id="regPhone" placeholder="Enter your phone number">
-                            </div>
-                            <div class="form-group">
-                                <label for="regPassword">Password</label>
-                                <input type="password" id="regPassword" placeholder="Create a password" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
-                        </form>
-                        <p class="form-footer" id="toggleFormText">Don't have an account? <a href="#"
-                                id="showRegister">Register here</a></p>
-                        <p class="form-footer" id="toggleLoginText" style="display:none;">Already have an account? <a
-                                href="#" id="showLogin">Login here</a></p>
-                        <p class="form-footer" id="adminLoginLink">Clerk/Staff? <a href="#" id="showAdminLogin">Admin
-                                Login</a></p>
-                        <p class="form-footer" id="studentLoginLink" style="display:none;">Student? <a href="#"
-                                id="showStudentLogin">Back to Student Login</a></p>
-                        <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e5e7eb;">
-                        <p style="text-align: center; font-size: 0.9rem; color: #9ca3af;">
-                            <strong>Demo Credentials</strong><br>
-                            Roll Number: CA01<br>
-                            Password: password123
-                        </p>
-                    </div>
+                <!-- Login Box -->
+                <div class="login-box">
+                    <h2 id="formTitle">Student <span>Login</span></h2>
+                    <div id="loginMessage"></div>
+                    <!-- Login Form -->
+                    <form id="loginForm" class="login-form">
+                        <div class="form-group">
+                            <label for="rollNumber">Roll Number / Enrollment ID</label>
+                            <input type="text" id="rollNumber" placeholder="Enter your roll number" required>
+                        </div>
+                        <div class="form-group" id="passwordRow">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-options">
+                            <label>
+                                <input type="checkbox" id="rememberMe"> Remember me
+                            </label>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+                    <!-- Registration Form (hidden by default) -->
+                    <form id="registerForm" class="login-form" style="display:none;">
+                        <div class="form-group">
+                            <label for="regRollNumber">Roll Number</label>
+                            <input type="text" id="regRollNumber" placeholder="Enter your roll number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regEnrollmentId">Enrollment ID</label>
+                            <input type="text" id="regEnrollmentId" placeholder="Enter your enrollment ID" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regFirstName">First Name</label>
+                            <input type="text" id="regFirstName" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regLastName">Last Name</label>
+                            <input type="text" id="regLastName" placeholder="Enter your last name">
+                        </div>
+                        <div class="form-group">
+                            <label for="regEmail">Email</label>
+                            <input type="email" id="regEmail" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regPhone">Phone</label>
+                            <input type="text" id="regPhone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="regPassword">Password</label>
+                            <input type="password" id="regPassword" placeholder="Create a password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </form>
+                    <p class="form-footer" id="toggleFormText">Don't have an account? <a href="#"
+                            id="showRegister">Register here</a></p>
+                    <p class="form-footer" id="toggleLoginText" style="display:none;">Already have an account? <a
+                            href="#" id="showLogin">Login here</a></p>
+                    <p class="form-footer" id="adminLoginLink">Clerk/Staff? <a href="#" id="showAdminLogin">Admin
+                            Login</a></p>
+                    <p class="form-footer" id="studentLoginLink" style="display:none;">Student? <a href="#"
+                            id="showStudentLogin">Back to Student Login</a></p>
+                    <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e5e7eb;">
+                    <p style="text-align: center; font-size: 0.9rem; color: #9ca3af;">
+                        <strong>Demo Credentials</strong><br>
+                        Roll Number: CA01<br>
+                        Password: password123
+                    </p>
+                </div>
 
-                    <div class="info-box">
-                        <h3>New User?</h3>
-                        <p>If you are a new student and don't have login credentials, please contact the administration
-                            office or visit the front desk.</p>
-                        <h4>Required Documents for Registration:</h4>
-                        <ul>
-                            <li>Valid Student ID</li>
-                            <li>Enrollment Certificate</li>
-                            <li>Proof of Identity</li>
-                        </ul>
-                    </div>
+                <div class="info-box">
+                    <h3>New User?</h3>
+                    <p>If you are a new student and don't have login credentials, please contact the administration
+                        office or visit the front desk.</p>
+                    <h4>Required Documents for Registration:</h4>
+                    <ul>
+                        <li>Valid Student ID</li>
+                        <li>Enrollment Certificate</li>
+                        <li>Proof of Identity</li>
+                    </ul>
                 </div>
             </div>
         </div>
