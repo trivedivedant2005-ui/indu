@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Dr. Indu Dayal Meshri Institute</title>
+    <link rel="stylesheet" href="style-complete.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>DIDM Institute</h2>
+                <p class="subtitle">HNGU</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="study-material.html">Study Material</a></li>
+                <li><a href="portal.html" class="active">Student Portal</a></li>
+                <li><a href="updates.html">Updates</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container header-content">
+            <h1>Student <span>Portal</span></h1>
+            <p>Access your academic information and resources</p>
+        </div>
+    </section>
+
+    <!-- Portal Section -->
+    <section class="portal-section">
+        <div class="container">
+            <div class="portal-content">
+                <!-- Login Form -->
+                <div class="login-container">
+                    <div class="login-box">
+                        <h2 id="formTitle">Student <span>Login</span></h2>
+                        <div id="loginMessage"></div>
+                        <!-- Login Form -->
+                        <form id="loginForm" class="login-form">
+                            <div class="form-group">
+                                <label for="rollNumber">Roll Number / Enrollment ID</label>
+                                <input type="text" id="rollNumber" placeholder="Enter your roll number" required>
+                            </div>
+                            <div class="form-group" id="passwordRow">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" placeholder="Enter your password" required>
+                            </div>
+                            <div class="form-options">
+                                <label>
+                                    <input type="checkbox" id="rememberMe"> Remember me
+                                </label>
+                                <a href="#" class="forgot-password">Forgot Password?</a>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </form>
+                        <!-- Registration Form (hidden by default) -->
+                        <form id="registerForm" class="login-form" style="display:none;">
+                            <div class="form-group">
+                                <label for="regRollNumber">Roll Number</label>
+                                <input type="text" id="regRollNumber" placeholder="Enter your roll number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regEnrollmentId">Enrollment ID</label>
+                                <input type="text" id="regEnrollmentId" placeholder="Enter your enrollment ID" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regFirstName">First Name</label>
+                                <input type="text" id="regFirstName" placeholder="Enter your first name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regLastName">Last Name</label>
+                                <input type="text" id="regLastName" placeholder="Enter your last name">
+                            </div>
+                            <div class="form-group">
+                                <label for="regEmail">Email</label>
+                                <input type="email" id="regEmail" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regPhone">Phone</label>
+                                <input type="text" id="regPhone" placeholder="Enter your phone number">
+                            </div>
+                            <div class="form-group">
+                                <label for="regPassword">Password</label>
+                                <input type="password" id="regPassword" placeholder="Create a password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </form>
+                        <p class="form-footer" id="toggleFormText">Don't have an account? <a href="#"
+                                id="showRegister">Register here</a></p>
+                        <p class="form-footer" id="toggleLoginText" style="display:none;">Already have an account? <a
+                                href="#" id="showLogin">Login here</a></p>
+                        <p class="form-footer" id="adminLoginLink">Clerk/Staff? <a href="#" id="showAdminLogin">Admin
+                                Login</a></p>
+                        <p class="form-footer" id="studentLoginLink" style="display:none;">Student? <a href="#"
+                                id="showStudentLogin">Back to Student Login</a></p>
+                        <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e5e7eb;">
+                        <p style="text-align: center; font-size: 0.9rem; color: #9ca3af;">
+                            <strong>Demo Credentials</strong><br>
+                            Roll Number: CA01<br>
+                            Password: password123
+                        </p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>New User?</h3>
+                        <p>If you are a new student and don't have login credentials, please contact the administration
+                            office or visit the front desk.</p>
+                        <h4>Required Documents for Registration:</h4>
+                        <ul>
+                            <li>Valid Student ID</li>
+                            <li>Enrollment Certificate</li>
+                            <li>Proof of Identity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portal Features -->
+    <section class="portal-features">
+        <div class="container">
+            <h2 class="section-title">Portal Features & Access</h2>
+            <div class="features-grid portal-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">📋</span>
+                    <h3>Academic Records</h3>
+                    <p>View your grades, transcripts, and academic progress</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📅</span>
+                    <h3>Class Schedule</h3>
+                    <p>Check timetable and class routines</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📝</span>
+                    <h3>Assignments</h3>
+                    <p>Submit and track your assignments</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">💬</span>
+                    <h3>Messages</h3>
+                    <p>Communicate with faculty and administration</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📚</span>
+                    <h3>Study Materials</h3>
+                    <p>Download lecture notes and course materials</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎫</span>
+                    <h3>Fee Payment</h3>
+                    <p>Online fee payment and instant receipts</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📞</span>
+                    <h3>Support Tickets</h3>
+                    <p>Raise queries and track resolutions</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🏆</span>
+                    <h3>Achievements</h3>
+                    <p>View your academic and co-curricular achievements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portal Navigation Guide -->
+    <section class="portal-guide">
+        <div class="container">
+            <h2 class="section-title">How to Use the Portal</h2>
+            <div class="guide-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Login</h3>
+                    <p>Enter your roll number and password to access your account</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Dashboard</h3>
+                    <p>View your personalized dashboard with quick access links</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Explore</h3>
+                    <p>Navigate through different sections as per your needs</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Submit</h3>
+                    <p>Complete assignments and submit online forms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support -->
+    <section class="portal-support">
+        <div class="container">
+            <h2 class="section-title">Need Help?</h2>
+            <div class="support-cards">
+                <div class="support-card">
+                    <h3>📧 Email Support</h3>
+                    <p>support@didminstitute.edu.in</p>
+                    <p class="support-time">Response within 24 hours</p>
+                </div>
+                <div class="support-card">
+                    <h3>📞 Phone Support</h3>
+                    <p>+91-XXXX-XXXXXX (IT Support Desk)</p>
+                    <p class="support-time">Monday - Friday, 9 AM - 5 PM</p>
+                </div>
+                <div class="support-card">
+                    <h3>💬 Live Chat</h3>
+                    <p>Available on portal login page</p>
+                    <p class="support-time">9 AM - 4 PM on weekdays</p>
+                </div>
+                <div class="support-card">
+                    <h3>🏢 Visit Office</h3>
+                    <p>IT Support Center, Ground Floor</p>
+                    <p class="support-time">Walk-in support available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Institute</h4>
+                    <p>Dr. Indu Dayal Meshri Institute of Computer Science & Technology is dedicated to providing
+                        quality education in computer science and IT.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="updates.html">Updates</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="YouTube">▶</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Dr. Indu Dayal Meshri Institute, HNGU. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

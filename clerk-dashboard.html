@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clerk Dashboard - DIDM Institute</title>
+    <link rel="stylesheet" href="style-complete.css">
+    <style>
+        /* Premium Clerk Dashboard Styles */
+        :root {
+            --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            background-color: #f8fafc;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .clerk-container {
+            max-width: 1200px;
+            margin: -60px auto 60px;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 2.5rem;
+            position: relative;
+            z-index: 10;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 968px) {
+            .clerk-container {
+                grid-template-columns: 1fr;
+                margin-top: -30px;
+            }
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-premium);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .action-btn {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .action-btn:hover {
+            background: #f1f5f9;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateX(5px);
+        }
+
+        .action-btn.active {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: #f1f5f9;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            background: white;
+            border-color: #3b82f6;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+
+<body style="background: #f1f5f9;">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>Clerk <span>Portal</span></h2>
+                <p class="subtitle">DIDM ADMIN</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">View Site</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container header-content">
+            <h1>Clerk <span>Management</span></h1>
+            <p>Admin panel for notices, gallery, and study material</p>
+        </div>
+    </header>
+
+    <div class="clerk-container">
+        <!-- Sidebar Tasks -->
+        <aside class="glass-card">
+            <h3>Quick Actions</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem;">
+                <button class="action-btn active" id="btn-notice" onclick="showForm('notice')">Post New Notice</button>
+                <button class="action-btn" id="btn-photo" onclick="showForm('photo')">Upload Gallery Photo</button>
+                <button class="action-btn" id="btn-material" onclick="showForm('material')">Add Study Material</button>
+                <button class="action-btn" id="btn-manage" onclick="showManage()">Manage My Uploads</button>
+                <button class="action-btn" id="btn-clerks" onclick="showClerks()" style="display: none;">Manage
+                    Clerks</button>
+            </div>
+        </aside>
+
+        <!-- Main Form Area -->
+        <main class="glass-card" id="formArea">
+            <h2 id="formTitle">Post New Notice</h2>
+            <form id="clerkForm" style="margin-top: 2rem;">
+                <!-- Fields will change based on selection -->
+                <div id="dynamicFields">
+                    <div class="form-group">
+                        <label>Notice Title</label>
+                        <input type="text" name="title" placeholder="Enter title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message Content</label>
+                        <textarea name="content" rows="6" placeholder="Write notice details here..."
+                            required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="category">
+                            <option>Academic</option>
+                            <option>Events</option>
+                            <option>Announcements</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">Publish Information</button>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            const token = localStorage.getItem('studentToken');
+            const userData = JSON.parse(localStorage.getItem('studentData'));
+
+            if (!token || !userData || (userData.role !== 'admin' && userData.role !== 'clerk' && userData.role !== 'super_admin')) {
+                alert('Unauthorized access. Please login as Admin/Clerk.');
+                window.location.href = 'portal.html';
+                return;
+            }
+
+            if (userData.role === 'super_admin') {
+                document.getElementById('btn-clerks').style.display = 'flex';
+            }
+        });
+
+        let currentMode = 'notice';
+
+        function showForm(mode) {
+            currentMode = mode;
+            const title = document.getElementById('formTitle');
+            const fields = document.getElementById('dynamicFields');
+
+            fields.innerHTML = '';
+
+            if (mode === 'notice') {
+                title.innerText = 'Post New Notice';
+                fields.innerHTML = `
+                    <div class="form-group">
+                        <label>Notice Title</label>
+                        <input type="text" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message Content</label>
+                        <textarea name="content" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="category">
+                            <option>Academic</option>
+                            <option>Events</option>
+                            <option>Announcements</option>
+                        </select>
+                    </div>
+                `;
+            } else if (mode === 'photo') {
+                title.innerText = 'Upload Gallery Photo';
+                fields.innerHTML = `
+                    <div class="form-group">
+                        <label>Photo Title</label>
+                        <input type="text" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Image</label>
+                        <input type="file" name="photo" accept="image/*" required>
+                    </div>
+                `;
+            } else if (mode === 'material') {
+                title.innerText = 'Upload Study Material';
+                fields.innerHTML = `
+                    <div class="form-group">
+                        <label>Subject/Topic Name</label>
+                        <input type="text" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Semester (1-10)</label>
+                        <input type="number" name="semester" min="1" max="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Select PDF</label>
+                        <input type="file" name="pdf" accept=".pdf" required>
+                    </div>
+                `;
+            }
+        }
+
+        document.getElementById('clerkForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const token = localStorage.getItem('studentToken');
+
+            let url = '';
+            let method = 'POST';
+            let body = formData;
+
+            if (currentMode === 'notice') url = '/api/clerk/update';
+            else if (currentMode === 'photo') url = '/api/clerk/upload-photo';
+            else if (currentMode === 'material') {
+                url = '/api/clerk/upload-material';
+                // Study material form in HTML has 'title', 'semester' and 'pdf'.
+                // backend expects 'title', 'semester', 'subject', 'pdf'.
+                // We'll use 'title' as 'subject' if not specified or just let it be.
+                if (!formData.has('subject')) formData.append('subject', formData.get('title'));
+            }
+
+            try {
+                const res = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}` },
+                    body: body
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert(data.message);
+                    e.target.reset();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            } catch (err) {
+                alert('Network error');
+            }
+        };
+
+        async function showManage() {
+            currentMode = 'manage';
+            updateActiveBtn('btn-manage');
+            const title = document.getElementById('formTitle');
+            const area = document.getElementById('formArea');
+            title.innerText = 'Manage My Uploads';
+
+            area.innerHTML = `
+                <h2 id="formTitle">Manage My Uploads</h2>
+                <div id="manageContent" style="margin-top: 2rem;">
+                    <p>Loading your uploads...</p>
+                </div>
+            `;
+
+            try {
+                const token = localStorage.getItem('studentToken');
+                const res = await fetch('/api/clerk/my-uploads', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const result = await res.json();
+
+                if (result.success) {
+                    const { notices, photos, materials } = result.data;
+                    let html = '<div style="display: flex; flex-direction: column; gap: 2rem;">';
+
+                    // Notices
+                    html += `<div><h3>Notices (${notices.length})</h3><div style="display: grid; gap: 1rem; margin-top: 1rem;">`;
+                    notices.forEach(n => {
+                        html += `
+                            <div class="glass-card" style="padding: 1rem; display: flex; justify-content: space-between; align-items: center; background: #fff;">
+                                <div><strong>${n.title}</strong><br><small>${n.category} | ${new Date(n.created_at).toLocaleDateString()}</small></div>
+                                <button onclick="deleteItem('notice', ${n.id})" style="background: #fee2e2; color: #dc2626; border: none; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer;">Delete</button>
+                            </div>
+                        `;
+                    });
+                    html += '</div></div>';
+
+                    // Photos
+                    html += `<div><h3>Photos (${photos.length})</h3><div style="display: grid; gap: 1rem; margin-top: 1rem;">`;
+                    photos.forEach(p => {
+                        html += `
+                            <div class="glass-card" style="padding: 1rem; display: flex; justify-content: space-between; align-items: center; background: #fff;">
+                                <div><strong>${p.title}</strong><br><small>${p.category}</small></div>
+                                <button onclick="deleteItem('photo', ${p.id})" style="background: #fee2e2; color: #dc2626; border: none; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer;">Delete</button>
+                            </div>
+                        `;
+                    });
+                    html += '</div></div>';
+
+                    // Materials
+                    html += `<div><h3>Study Materials (${materials.length})</h3><div style="display: grid; gap: 1rem; margin-top: 1rem;">`;
+                    materials.forEach(m => {
+                        html += `
+                            <div class="glass-card" style="padding: 1rem; display: flex; justify-content: space-between; align-items: center; background: #fff;">
+                                <div><strong>${m.title}</strong><br><small>Sem ${m.semester} | ${m.subject || ''}</small></div>
+                                <button onclick="deleteItem('material', ${m.id})" style="background: #fee2e2; color: #dc2626; border: none; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer;">Delete</button>
+                            </div>
+                        `;
+                    });
+                    html += '</div></div>';
+
+                    html += '</div>';
+                    document.getElementById('manageContent').innerHTML = html;
+                }
+            } catch (err) {
+                document.getElementById('manageContent').innerHTML = '<p>Error loading data.</p>';
+            }
+        }
+
+        async function showClerks() {
+            updateActiveBtn('btn-clerks');
+            const area = document.getElementById('formArea');
+            area.innerHTML = `
+                <h2 id="formTitle">Manage Clerks</h2>
+                <div id="clerkList" style="margin-top: 2rem;">
+                    <p>Loading clerk accounts...</p>
+                </div>
+            `;
+
+            try {
+                const token = localStorage.getItem('studentToken');
+                const res = await fetch('/api/auth/admin/clerks', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const result = await res.json();
+
+                if (result.success) {
+                    let html = '<div style="display: grid; gap: 1rem;">';
+                    result.data.forEach(c => {
+                        html += `
+                            <div class="glass-card" style="padding: 1rem; display: flex; justify-content: space-between; align-items: center; background: #fff;">
+                                <div><strong>${c.name}</strong><br><small>${c.email}</small></div>
+                                <button onclick="deleteClerk(${c.id})" style="background: #fee2e2; color: #dc2626; border: none; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer;">Delete</button>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                    document.getElementById('clerkList').innerHTML = html;
+                }
+            } catch (err) {
+                document.getElementById('clerkList').innerHTML = '<p>Error loading clerks.</p>';
+            }
+        }
+
+        async function deleteItem(type, id) {
+            if (!confirm('Are you sure you want to delete this item?')) return;
+            const token = localStorage.getItem('studentToken');
+            try {
+                const res = await fetch(`/api/clerk/${type}/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert('Deleted successfully');
+                    showManage();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            } catch (err) {
+                alert('Network error');
+            }
+        }
+
+        async function deleteClerk(id) {
+            if (!confirm('Are you sure you want to delete this clerk account?')) return;
+            const token = localStorage.getItem('studentToken');
+            try {
+                const res = await fetch(`/api/auth/admin/clerk/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert('Clerk deleted');
+                    showClerks();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            } catch (err) {
+                alert('Network error');
+            }
+        }
+
+        function updateActiveBtn(id) {
+            document.querySelectorAll('.action-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        function showForm(mode) {
+            currentMode = mode;
+            updateActiveBtn('btn-' + mode);
+            const area = document.getElementById('formArea');
+            area.innerHTML = `
+                <h2 id="formTitle"></h2>
+                <form id="clerkForm" style="margin-top: 2rem;">
+                    <div id="dynamicFields"></div>
+                    <button type="submit" class="btn-submit">Publish Information</button>
+                </form>
+            `;
+
+            const title = document.getElementById('formTitle');
+            const fields = document.getElementById('dynamicFields');
+
+            if (mode === 'notice') {
+                title.innerText = 'Post New Notice';
+                fields.innerHTML = `
+                    <div class="form-group">
+                        <label>Notice Title</label>
+                        <input type="text" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message Content</label>
+                        <textarea name="content" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="category">
+                            <option>Academic</option>
+                            <option>Events</option>
+                            <option>Announcements</option>
+                        </select>
+                    </div>
+                `;
+            } else if (mode === 'photo') {
+                title.innerText = 'Upload Gallery Photo';
+                fields.innerHTML = `
+                    <div class="form-group">
+                        <label>Photo Title</label>
+                        <input type="text" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="category">
+                            <option>Campus</option>
+                            <option>Events</option>
+                            <option>Faculty</option>
+                            <option>Infrastructure</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Image</label>
+                        <input type="file" name="photo" accept="image/*" required>
+                    </div>
+                `;
+            } else if (mode === 'material') {
+                title.innerText = 'Upload Study Material';
+                fields.innerHTML = `
+                    <div class="form-group">
+                        <label>Subject/Topic Name</label>
+                        <input type="text" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Semester (1-10)</label>
+                        <input type="number" name="semester" min="1" max="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Select PDF</label>
+                        <input type="file" name="pdf" accept=".pdf" required>
+                    </div>
+                `;
+            }
+            // Re-bind submit handler since we innerHTML'd the form
+            document.getElementById('clerkForm').onsubmit = handleFormSubmit;
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const token = localStorage.getItem('studentToken');
+
+            let url = '';
+            if (currentMode === 'notice') url = '/api/clerk/update';
+            else if (currentMode === 'photo') url = '/api/clerk/upload-photo';
+            else if (currentMode === 'material') url = '/api/clerk/upload-material';
+
+            try {
+                const res = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}` },
+                    body: formData
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert(data.message);
+                    e.target.reset();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            } catch (err) {
+                alert('Network error');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('studentToken');
+            localStorage.removeItem('studentData');
+            window.location.href = 'portal.html';
+        }
+    </script>
+</body>
+
+</html>

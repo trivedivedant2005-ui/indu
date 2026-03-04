@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Test</title>
+</head>
+<body>
+    <h2>Admin Login Test</h2>
+    <form id="adminLoginForm">
+        <input type="email" id="adminEmail" placeholder="Email" value="trivedivedant2005@gmail.com" style="width: 300px; padding: 10px; margin: 5px;"><br>
+        <input type="password" id="adminPassword" placeholder="Password" value="A124@lok." style="width: 300px; padding: 10px; margin: 5px;"><br>
+        <button type="submit" style="padding: 10px 20px; margin: 5px;">Login Admin</button>
+    </form>
+    
+    <h2>Student Login Test</h2>
+    <form id="studentLoginForm">
+        <input type="text" id="rollNumber" placeholder="Roll Number" value="CA01" style="width: 300px; padding: 10px; margin: 5px;"><br>
+        <input type="password" id="studentPassword" placeholder="Password" value="password123" style="width: 300px; padding: 10px; margin: 5px;"><br>
+        <button type="submit" style="padding: 10px 20px; margin: 5px;">Login Student</button>
+    </form>
+    
+    <div id="result" style="margin-top: 20px; padding: 20px; border: 1px solid #ccc;"></div>
+
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/auth/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                document.getElementById('result').innerHTML = `
+                    <h3>Admin Login Result:</h3>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('result').innerHTML = `
+                    <h3>Admin Login Error:</h3>
+                    <p>${error.message}</p>
+                `;
+            }
+        });
+        
+        document.getElementById('studentLoginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const roll_number = document.getElementById('rollNumber').value;
+            const password = document.getElementById('studentPassword').value;
+            
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ roll_number, password })
+                });
+                
+                const data = await response.json();
+                document.getElementById('result').innerHTML = `
+                    <h3>Student Login Result:</h3>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('result').innerHTML = `
+                    <h3>Student Login Error:</h3>
+                    <p>${error.message}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

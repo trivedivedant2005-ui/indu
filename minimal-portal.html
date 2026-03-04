@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Portal Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" style="margin-top: 100px;">
+        <div class="login-box">
+            <h2 id="formTitle">Student <span>Login</span></h2>
+            <div id="loginMessage"></div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="rollNumber">Roll Number / Email</label>
+                    <input type="text" id="rollNumber" placeholder="Enter roll number or email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+            
+            <p style="margin-top: 20px;">
+                <button type="button" onclick="toggleMode()" class="btn btn-secondary">Switch to Admin Login</button>
+            </p>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #f0f0f0; border-radius: 5px;">
+                <strong>Test Credentials:</strong><br>
+                Admin: trivedivedant2005@gmail.com / A124@lok.<br>
+                Student: CA01 / password123
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let is_admin_login = false;
+        
+        function toggleMode() {
+            is_admin_login = !is_admin_login;
+            const formTitle = document.getElementById('formTitle');
+            const rollNumberInput = document.getElementById('rollNumber');
+            const rollNumberLabel = document.querySelector('label[for="rollNumber"]');
+            
+            if (is_admin_login) {
+                formTitle.innerHTML = 'Admin <span>Login</span>';
+                rollNumberLabel.textContent = 'Email Address';
+                rollNumberInput.type = 'email';
+                rollNumberInput.placeholder = 'Enter your email';
+                rollNumberInput.value = 'trivedivedant2005@gmail.com';
+            } else {
+                formTitle.innerHTML = 'Student <span>Login</span>';
+                rollNumberLabel.textContent = 'Roll Number';
+                rollNumberInput.type = 'text';
+                rollNumberInput.placeholder = 'Enter your roll number';
+                rollNumberInput.value = 'CA01';
+            }
+        }
+        
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const rollNumber = document.getElementById('rollNumber').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('loginMessage');
+            
+            console.log('=== LOGIN ATTEMPT ===');
+            console.log('Mode:', is_admin_login ? 'ADMIN' : 'STUDENT');
+            console.log('Identifier:', rollNumber);
+            console.log('Password:', password.substring(0, 3) + '***');
+            
+            messageDiv.innerHTML = 'Logging in...';
+            
+            try {
+                const API_URL = 'http://127.0.0.1:5000/api';
+                const endpoint = is_admin_login ? 'auth/admin/login' : 'auth/login';
+                const body = is_admin_login 
+                    ? { email: rollNumber, password: password }
+                    : { roll_number: rollNumber, password: password };
+                
+                console.log('Request URL:', `${API_URL}/${endpoint}`);
+                console.log('Request body:', body);
+                
+                const response = await fetch(`${API_URL}/${endpoint}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+                
+                console.log('Response status:', response.status);
+                const data = await response.json();
+                console.log('Response data:', data);
+                
+                if (data.success) {
+                    messageDiv.innerHTML = `
+                        <div style="background: #d1fae5; color: #065f46; padding: 1rem; border-radius: 8px;">
+                            ✓ Login successful! Welcome ${data.admin ? data.admin.name : data.student.name}
+                        </div>
+                    `;
+                    
+                    // Redirect after success
+                    setTimeout(() => {
+                        if (data.admin) {
+                            window.location.href = 'clerk-dashboard.html';
+                        } else {
+                            window.location.href = 'dashboard.html';
+                        }
+                    }, 1500);
+                } else {
+                    messageDiv.innerHTML = `
+                        <div style="background: #fee2e2; color: #991b1b; padding: 1rem; border-radius: 8px;">
+                            ✗ ${data.message}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                messageDiv.innerHTML = `
+                    <div style="background: #fee2e2; color: #991b1b; padding: 1rem; border-radius: 8px;">
+                        ✗ Connection error: ${error.message}
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

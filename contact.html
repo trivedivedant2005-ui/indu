@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Dr. Indu Dayal Meshri Institute</title>
+    <link rel="stylesheet" href="style-complete.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>DIDM Institute</h2>
+                <p class="subtitle">HNGU</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="study-material.html">Study Material</a></li>
+                <li><a href="portal.html">Student Portal</a></li>
+                <li><a href="updates.html">Updates</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container header-content">
+            <h1>Contact <span>Us</span></h1>
+            <p>Get in touch with us - We're here to help!</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2>Send us a Message</h2>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your full name" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="your.email@example.com"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91-XXXXXXXXXX">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a category</option>
+                                <option value="admission">Admission Inquiry</option>
+                                <option value="academics">Academic Matters</option>
+                                <option value="placement">Placement Related</option>
+                                <option value="facilities">Facilities</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Write your message here..."
+                                required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" required> I agree to the privacy policy
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-content">
+                            <h3>Address</h3>
+                            <p>Dr. Indu Dayal Meshri Institute<br>
+                                Of Computer Science & Technology<br>
+                                North Gujarat University Campus<br>
+                                Patan, North Gujarat<br>
+                                Gujarat, India</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div class="info-content">
+                            <h3>Phone Numbers</h3>
+                            <p><strong>Main Office:</strong> +91-XXXX-XXXXXX<br>
+                                <strong>Admissions:</strong> +91-XXXX-XXXXXX<br>
+                                <strong>Academic:</strong> +91-XXXX-XXXXXX<br>
+                                <strong>IT Support:</strong> +91-XXXX-XXXXXX
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">✉️</div>
+                        <div class="info-content">
+                            <h3>Email</h3>
+                            <p><strong>General:</strong> info@didminstitute.edu.in<br>
+                                <strong>Admissions:</strong> admissions@didminstitute.edu.in<br>
+                                <strong>Support:</strong> support@didminstitute.edu.in<br>
+                                <strong>Placements:</strong> placements@didminstitute.edu.in
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">⏰</div>
+                        <div class="info-content">
+                            <h3>Office Hours</h3>
+                            <p><strong>Monday - Friday:</strong> 9:00 AM - 5:30 PM<br>
+                                <strong>Saturday:</strong> 10:00 AM - 2:00 PM<br>
+                                <strong>Sunday:</strong> Closed<br>
+                                <strong>Holidays:</strong> Closed
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="departments">
+        <div class="container">
+            <h2 class="section-title">Administrative Departments</h2>
+            <div class="departments-grid">
+                <div class="dept-card">
+                    <h3>Admissions Office</h3>
+                    <p>inquiry related to admissions and program details</p>
+                    <p class="dept-contact">admissions@didminstitute.edu.in</p>
+                    <p>+91-XXXX-XXXXXX</p>
+                </div>
+
+                <div class="dept-card">
+                    <h3>Academic Section</h3>
+                    <p>Curriculum, course materials, and academic support</p>
+                    <p class="dept-contact">academic@didminstitute.edu.in</p>
+                    <p>+91-XXXX-XXXXXX</p>
+                </div>
+
+                <div class="dept-card">
+                    <h3>Examination Cell</h3>
+                    <p>Exam schedules, results, and certifications</p>
+                    <p class="dept-contact">exams@didminstitute.edu.in</p>
+                    <p>+91-XXXX-XXXXXX</p>
+                </div>
+
+                <div class="dept-card">
+                    <h3>Placement Cell</h3>
+                    <p>Recruitment drives and career opportunities</p>
+                    <p class="dept-contact">placements@didminstitute.edu.in</p>
+                    <p>+91-XXXX-XXXXXX</p>
+                </div>
+
+                <div class="dept-card">
+                    <h3>Finance & Accounts</h3>
+                    <p>Fee payment, scholarships, and financial matters</p>
+                    <p class="dept-contact">finance@didminstitute.edu.in</p>
+                    <p>+91-XXXX-XXXXXX</p>
+                </div>
+
+                <div class="dept-card">
+                    <h3>IT Support Center</h3>
+                    <p>Portal issues, Wi-Fi problems, technical support</p>
+                    <p class="dept-contact">support@didminstitute.edu.in</p>
+                    <p>+91-XXXX-XXXXXX</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section (Placeholder) -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Location</h2>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.8743277306633!2d72.12345!3d23.87654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sNorth%20Gujarat%20University!5e0!3m2!1sen!2sin!4v1"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-items">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What are the admission requirements?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Candidates should have a Bachelor's degree in any field recognized by HNGU. Merit-based and
+                            entrance exam-based admissions are available. Visit our admissions page for detailed
+                            criteria.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is the fee structure for MSc CA & IT?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The fee structure is available on our website and portal. We also offer several scholarship
+                            schemes based on merit and financial need. Contact the finance office for detailed
+                            information.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can I reset my portal password?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Click on "Forgot Password" on the login page and enter your enrollment ID. A reset link will
+                            be sent to your registered email. Follow the instructions to set a new password.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is the placement scenario for graduates?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our institute maintains a 95% placement rate with avg CTC 6.5 LPA. Students are placed in
+                            leading IT companies like TCS, Infosys, Cognizant, Wipro, and others.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are hostel facilities available?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we have separate boys' and girls' hostels with modern amenities. Limited seats are
+                            available and allocated based on merit and distance from campus. Contact the hostel office
+                            for details.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I contact faculty directly?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, faculty members have designated office hours and can be contacted through the student
+                            portal. You can also reach them via email at [faculty email addresses listed on portal].</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <h4>DIDM Institute</h4>
+                <p>Empowering students through technology and quality education. Affiliated with Hemchandracharya North
+                    Gujarat University.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+                    <li><a href="study-material.html">Study Material</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <p>📍 DIDM Institute, Radhanpur Road, Mehsana</p>
+                <p>📞 +91 12345 67890</p>
+                <p>📧 info@didminstitute.edu.in</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dr. Indu Dayal Meshri Institute. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

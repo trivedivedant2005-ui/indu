@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Dr. Indu Dayal Meshri Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-complete.css">
+</head>
+<body>
+    <div id="loader" class="loader-container">
+        <div class="spinner"></div>
+        <div class="loader-text">LOADING YOUR PROFILE...</div>
+    </div>
+
+    <div id="dashboardApp" class="dashboard-container" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>DIDM Portal</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active">📊 Dashboard</a></li>
+                <li><a href="#">📚 My Courses</a></li>
+                <li><a href="#">📝 Grades & Results</a></li>
+                <li><a href="#">💳 Fee Details</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="glass-card">
+                    <div class="welcome-header">
+                        <div class="welcome-text">
+                            <h1>Welcome back, <span id="studentName">Student</span>! 👋</h1>
+                            <p class="welcome-subtitle">MSc Computer Applications & IT • Semester <span id="studentSemester">1</span></p>
+                        </div>
+                        <div class="welcome-actions">
+                            <button class="btn btn-primary">📝 Edit Profile</button>
+                            <button class="btn btn-secondary">🔔 Notifications</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Stats -->
+            <section class="stats-section">
+                <h2 class="section-title">Academic <span>Overview</span></h2>
+                <div class="stats-grid">
+                    <div class="stat-card glass-card">
+                        <div class="stat-icon">📚</div>
+                        <div class="stat-info">
+                            <h3>6</h3>
+                            <p>Active Courses</p>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-info">
+                            <h3>8.2</h3>
+                            <p>Current CGPA</p>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <h3>85%</h3>
+                            <p>Attendance Rate</p>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p>Assignments Done</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="activity-section">
+                <h2 class="section-title">Recent <span>Activity</span></h2>
+                <div class="activity-list">
+                    <div class="activity-item glass-card">
+                        <div class="activity-icon">📝</div>
+                        <div class="activity-content">
+                            <h4>Data Structures Assignment Submitted</h4>
+                            <p class="activity-time">2 hours ago</p>
+                            <p class="activity-desc">Submitted assignment on Binary Trees and Graph Algorithms</p>
+                        </div>
+                    </div>
+                    <div class="activity-item glass-card">
+                        <div class="activity-icon">📊</div>
+                        <div class="activity-content">
+                            <h4>Mid-term Results Published</h4>
+                            <p class="activity-time">1 day ago</p>
+                            <p class="activity-desc">Check your results for Database Management course</p>
+                        </div>
+                    </div>
+                    <div class="activity-item glass-card">
+                        <div class="activity-icon">📚</div>
+                        <div class="activity-content">
+                            <h4>New Study Material Added</h4>
+                            <p class="activity-time">3 days ago</p>
+                            <p class="activity-desc">Web Development resources are now available</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upcoming Events -->
+            <section class="events-section">
+                <h2 class="section-title">Upcoming <span>Events</span></h2>
+                <div class="events-grid">
+                    <div class="event-card glass-card">
+                        <div class="event-date">
+                            <span class="date">15</span>
+                            <span class="month">MAR</span>
+                        </div>
+                        <div class="event-content">
+                            <h4>Annual Tech Fest</h4>
+                            <p class="event-time">March 15-16, 2026</p>
+                            <p class="event-desc">Participate in coding competitions and workshops</p>
+                        </div>
+                    </div>
+                    <div class="event-card glass-card">
+                        <div class="event-date">
+                            <span class="date">20</span>
+                            <span class="month">MAR</span>
+                        </div>
+                        <div class="event-content">
+                            <h4>Viva Voce</h4>
+                            <p class="event-time">March 20, 2026</p>
+                            <p class="event-desc">Data Structures practical examination</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Institute</h4>
+                    <p>Dr. Indu Dayal Meshri Institute of Computer Science & Technology is dedicated to providing
+                        quality education in computer science and IT.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="updates.html">Updates</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="YouTube">▶</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Dr. Indu Dayal Meshri Institute, HNGU. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Dashboard loaded');
+            
+            // Check if user is logged in
+            const token = localStorage.getItem('studentToken');
+            const studentData = localStorage.getItem('studentData');
+            
+            if (!token || !studentData) {
+                window.location.href = 'portal.html';
+                return;
+            }
+            
+            // Parse student data
+            const student = JSON.parse(studentData);
+            
+            // Update UI with student data
+            document.getElementById('studentName').textContent = student.name || 'Student';
+            document.getElementById('studentSemester').textContent = student.semester || '1';
+            
+            // Hide loader and show dashboard
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('dashboardApp').style.display = 'flex';
+            }, 1500);
+            
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

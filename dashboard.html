@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard - Dr. Indu Dayal Meshri Institute</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-complete.css">
+</head>
+/* Premium Dashboard Design */
+:root {
+--primary: #4f46e5;
+--primary-hover: #4338ca;
+--secondary: #10b981;
+--dark: #0f172a;
+--darker: #0b1120;
+--light: #f8fafc;
+--white: #ffffff;
+--gray: #94a3b8;
+--danger: #ef4444;
+--shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+--shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+--glass-bg: rgba(255, 255, 255, 0.9);
+--transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+font-family: 'Outfit', sans-serif;
+background-color: var(--light);
+margin: 0;
+color: #1e293b;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+display: flex;
+min-height: 100vh;
+}
+
+/* Sidebar - Premium Dark Mode */
+.sidebar {
+width: 280px;
+background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+color: var(--white);
+display: flex;
+flex-direction: column;
+transition: var(--transition);
+box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+position: relative;
+z-index: 20;
+}
+
+.sidebar-header {
+padding: 2.5rem 2rem;
+text-align: center;
+border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-header h2 {
+margin: 0;
+font-size: 1.8rem;
+font-weight: 700;
+background: linear-gradient(135deg, #a5b4fc, #818cf8);
+-webkit-background-clip: text;
+background-clip: text;
+-webkit-text-fill-color: transparent;
+letter-spacing: 0.5px;
+}
+
+.sidebar-menu {
+flex: 1;
+padding: 2rem 0;
+list-style: none;
+margin: 0;
+}
+
+.sidebar-menu li a {
+display: flex;
+align-items: center;
+padding: 1rem 2.5rem;
+color: var(--gray);
+text-decoration: none;
+transition: var(--transition);
+font-weight: 500;
+position: relative;
+border-left: 4px solid transparent;
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li a.active {
+background: linear-gradient(90deg, rgba(79, 70, 229, 0.1) 0%, transparent 100%);
+color: var(--white);
+border-left: 4px solid var(--primary);
+}
+
+.sidebar-menu li a i {
+margin-right: 1.2rem;
+font-size: 1.2rem;
+width: 20px;
+}
+
+/* Main Content */
+.main-content {
+flex: 1;
+display: flex;
+flex-direction: column;
+overflow-y: auto;
+background: #f1f5f9;
+position: relative;
+}
+
+.main-content::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 300px;
+background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+z-index: 0;
+border-radius: 0 0 40px 40px;
+}
+
+/* Top Bar - Glassmorphism */
+.topbar {
+background: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+padding: 1.2rem 3rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 10;
+position: sticky;
+top: 0;
+}
+
+.topbar-title {
+font-size: 1.4rem;
+font-weight: 800;
+color: white;
+margin: 0;
+letter-spacing: 0.5px;
+}
+
+.user-profile {
+display: flex;
+align-items: center;
+gap: 1.2rem;
+}
+
+.user-info {
+text-align: right;
+}
+
+.user-info .name {
+font-weight: 600;
+color: white;
+display: block;
+font-size: 1.05rem;
+}
+
+.user-info .role {
+font-size: 0.85rem;
+color: rgba(255, 255, 255, 0.8);
+}
+
+.avatar {
+width: 48px;
+height: 48px;
+border-radius: 14px;
+background: rgba(255, 255, 255, 0.2);
+border: 2px solid rgba(255, 255, 255, 0.5);
+color: var(--white);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.4rem;
+font-weight: bold;
+box-shadow: var(--shadow-sm);
+}
+
+.logout-btn {
+background: rgba(239, 68, 68, 0.9);
+color: var(--white);
+border: none;
+padding: 0.6rem 1.2rem;
+border-radius: 8px;
+cursor: pointer;
+font-weight: 600;
+transition: var(--transition);
+backdrop-filter: blur(5px);
+}
+
+.logout-btn:hover {
+background: #dc2626;
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+/* Dashboard Content Area */
+.dashboard-content {
+padding: 3rem;
+z-index: 1;
+position: relative;
+}
+
+/* Welcome /* Stats Grid */
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 1.5rem;
+margin-bottom: 2.5rem;
+}
+
+.stat-card {
+background: white;
+padding: 1.8rem;
+border-radius: 20px;
+box-shadow: var(--shadow-sm);
+display: flex;
+align-items: center;
+gap: 1.5rem;
+transition: var(--transition);
+border: 1px solid #e2e8f0;
+position: relative;
+overflow: hidden;
+}
+
+.stat-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 4px;
+height: 100%;
+background: var(--primary);
+transition: width 0.3s ease;
+}
+
+.stat-card:hover {
+transform: translateY(-5px);
+box-shadow: var(--shadow-lg);
+border-color: transparent;
+}
+
+.stat-card:hover::before {
+width: 100%;
+opacity: 0.1;
+}
+
+.stat-icon {
+width: 64px;
+height: 64px;
+border-radius: 16px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 2rem;
+background: #f1f5f9;
+box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stat-info h3 {
+margin: 0 0 0.5rem 0;
+font-size: 0.95rem;
+color: var(--gray);
+text-transform: uppercase;
+letter-spacing: 0.5px;
+font-weight: 600;
+}
+
+.stat-info p {
+margin: 0;
+font-size: 1.6rem;
+font-weight: 700;
+color: var(--dark);
+}
+
+/* Profile Details Section */
+.details-section {
+background: white;
+border-radius: 20px;
+box-shadow: var(--shadow-lg);
+overflow: hidden;
+border: 1px solid #e2e8f0;
+margin-bottom: 3rem;
+}
+
+.details-header {
+padding: 1.8rem 2.5rem;
+border-bottom: 1px solid #e2e8f0;
+background: #f8fafc;
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+
+.details-header h3 {
+margin: 0;
+color: var(--dark);
+font-size: 1.3rem;
+font-weight: 600;
+}
+
+.details-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
+padding: 2.5rem;
+}
+
+.detail-item {
+margin-bottom: 1.5rem;
+transition: transform 0.3s ease;
+}
+
+.detail-item:hover {
+transform: translateX(5px);
+}
+
+.detail-item label {
+display: block;
+font-size: 0.85rem;
+color: var(--gray);
+margin-bottom: 0.8rem;
+text-transform: uppercase;
+letter-spacing: 0.8px;
+font-weight: 600;
+}
+
+.detail-value {
+font-size: 1.15rem;
+color: var(--dark);
+font-weight: 500;
+padding: 1rem 1.2rem;
+background: #f8fafc;
+border-radius: 12px;
+border: 1px solid #e2e8f0;
+transition: all 0.3s ease;
+}
+
+.detail-item:hover .detail-value {
+background: white;
+border-color: #cbd5e1;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+/* Loading Spinner - Premium */
+.loader-container {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background: var(--light);
+gap: 1.5rem;
+}
+
+.spinner {
+width: 60px;
+height: 60px;
+border: 4px solid rgba(79, 70, 229, 0.1);
+border-top-color: var(--primary);
+border-bottom-color: var(--primary);
+border-radius: 50%;
+animation: spin 1s infinite cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+.loader-text {
+color: var(--primary);
+font-weight: 600;
+letter-spacing: 1px;
+animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes spin {
+0% {
+transform: rotate(0deg);
+}
+
+100% {
+transform: rotate(360deg);
+}
+}
+
+@keyframes pulse {
+
+0%,
+100% {
+opacity: 1;
+}
+
+50% {
+opacity: 0.5;
+}
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+.sidebar {
+position: fixed;
+left: -280px;
+height: 100vh;
+z-index: 100;
+}
+
+.sidebar.show {
+left: 0;
+}
+
+.welcome-card {
+flex-direction: column;
+text-align: center;
+gap: 1rem;
+}
+}
+</style>
+</head>
+
+<body>
+
+  <div id="loader" class="loader-container">
+    <div class="spinner"></div>
+    <div class="loader-text">LOADING YOUR PROFILE...</div>
+  </div>
+
+  <div id="dashboardApp" class="dashboard-container" style="display: none;">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>DIDM Portal</h2>
+      </div>
+      <ul class="sidebar-menu">
+        <li><a href="#" class="active">📊 Dashboard</a></li>
+        <li><a href="#">📚 My Courses</a></li>
+        <li><a href="#">📝 Grades & Results</a></li>
+        <li><a href="#">💳 Fee Details</a></li>
+        <li><a href="#">💼 Placements</a></li>
+        <li><a href="index.html">🏠 Back to Home</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Topbar -->
+      <header class="topbar">
+        <h2 class="topbar-title">Student Dashboard</h2>
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="name" id="topName">Student Name</span>
+            <span class="role">Student</span>
+          </div>
+          <div class="avatar" id="topAvatar">S</div>
+          <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <div class="dashboard-content">
+        <!-- Welcome Banner -->
+        <div class="welcome-card">
+          <div class="welcome-text">
+            <h1 id="welcomeText">Welcome back, Student!</h1>
+            <p>Here's an overview of your academic profile.</p>
+          </div>
+          <div style="font-size: 4rem; opacity: 0.8;">🎓</div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="glass-card stat-card">
+            <div class="stat-icon" style="background: #dbeafe; color: #2563eb;">
+              🔢
+            </div>
+            <div class="stat-info">
+              <h3>Roll Number</h3>
+              <p id="statRoll">----</p>
+            </div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-icon" style="background: #d1fae5; color: #059669;">
+              📅
+            </div>
+            <div class="stat-info">
+              <h3>Semester</h3>
+              <p id="statSemester">-</p>
+            </div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-icon" style="background: #fef3c7; color: #d97706;">
+              🟢
+            </div>
+            <div class="stat-info">
+              <h3>Status</h3>
+              <p id="statStatus">Active</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Details -->
+        <div class="glass-card details-section">
+          <div class="details-header">
+            <h3>Personal Information</h3>
+          </div>
+          <div class="details-grid">
+            <div class="detail-item">
+              <label>Full Name</label>
+              <div class="detail-value" id="detailName">-</div>
+            </div>
+            <div class="detail-item">
+              <label>Enrollment ID</label>
+              <div class="detail-value" id="detailEnr">-</div>
+            </div>
+            <div class="detail-item">
+              <label>Email Address</label>
+              <div class="detail-value" id="detailEmail">-</div>
+            </div>
+            <div class="detail-item">
+              <label>Phone Number</label>
+              <div class="detail-value" id="detailPhone">-</div>
+            </div>
+            <div class="detail-item">
+              <label>Admission Date</label>
+              <div class="detail-value" id="detailAdmission">-</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const API_URL = 'http://127.0.0.1:5000/api';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const token = localStorage.getItem('studentToken');
+
+      // Redirect to portal if not logged in
+      if (!token) {
+        window.location.href = 'portal.html';
+        return;
+      }
+
+      try {
+        // Fetch full profile from backend
+        const response = await fetch(`${API_URL}/students/profile`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          populateDashboard(data.student);
+        } else {
+          // Token might be invalid/expired
+          alert('Session expired. Please log in again.');
+          logout();
+        }
+      } catch (error) {
+        console.error('Error fetching profile:', error);
+        // Fallback to local storage data if network fails
+        const localData = JSON.parse(localStorage.getItem('studentData'));
+        if (localData) {
+          populateLocalData(localData);
+        } else {
+          alert('Unable to load dashboard data. Please log in again.');
+          logout();
+        }
+      }
+    });
+
+    function populateDashboard(student) {
+      const fullName = `${student.first_name} ${student.last_name}`;
+
+      // Topbar
+      document.getElementById('topName').textContent = fullName;
+      document.getElementById('topAvatar').textContent = student.first_name.charAt(0).toUpperCase();
+
+      // Welcome
+      document.getElementById('welcomeText').textContent = `Welcome back, ${student.first_name}!`;
+
+      // Stats
+      document.getElementById('statRoll').textContent = student.roll_number;
+      document.getElementById('statSemester').textContent = 'Semester ' + student.semester;
+      document.getElementById('statStatus').textContent = (student.status || 'Active').toUpperCase();
+
+      // Details
+      document.getElementById('detailName').textContent = fullName;
+      document.getElementById('detailEnr').textContent = student.enrollment_id || 'N/A';
+      document.getElementById('detailEmail').textContent = student.email;
+      document.getElementById('detailPhone').textContent = student.phone || 'N/A';
+
+      if (student.admission_date) {
+        const date = new Date(student.admission_date);
+        document.getElementById('detailAdmission').textContent = date.toLocaleDateString();
+      } else {
+        document.getElementById('detailAdmission').textContent = 'N/A';
+      }
+
+      // Show dashboard
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('dashboardApp').style.display = 'flex';
+    }
+
+    function populateLocalData(student) {
+      // Topbar
+      document.getElementById('topName').textContent = student.name || 'Student';
+      document.getElementById('topAvatar').textContent = (student.name || 'S').charAt(0).toUpperCase();
+
+      // Welcome
+      document.getElementById('welcomeText').textContent = `Welcome back, ${student.name || 'Student'}!`;
+
+      // Stats
+      document.getElementById('statRoll').textContent = student.roll_number || 'N/A';
+      document.getElementById('statSemester').textContent = student.semester ? `Semester ${student.semester}` : 'N/A';
+
+      // Details
+      document.getElementById('detailName').textContent = student.name || 'N/A';
+      document.getElementById('detailEmail').textContent = student.email || 'N/A';
+
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('dashboardApp').style.display = 'flex';
+    }
+
+    function logout() {
+      localStorage.removeItem('studentToken');
+      localStorage.removeItem('studentData');
+      window.location.href = 'portal.html';
+    }
+  </script>
+</body>
+
+</html>

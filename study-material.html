@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Material - Dr. Indu Dayal Meshri Institute</title>
+    <link rel="stylesheet" href="style-complete.css">
+    <style>
+        .semester-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .sem-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            background: white;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .sem-btn.active,
+        .sem-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .material-card {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .doc-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .material-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .material-info p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .download-btn {
+            margin-left: auto;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>DIDM Institute</h2>
+                <p class="subtitle">HNGU</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="study-material.html" class="active">Study Material</a></li>
+                <li><a href="portal.html">Student Portal</a></li>
+                <li><a href="updates.html">Updates</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container header-content">
+            <h1>Study <span>Material</span></h1>
+            <p>Semester-wise academic resources and PDFs</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="semester-tabs">
+            <button class="sem-btn active" onclick="loadSemester(1)">Sem 1</button>
+            <button class="sem-btn" onclick="loadSemester(2)">Sem 2</button>
+            <button class="sem-btn" onclick="loadSemester(3)">Sem 3</button>
+            <button class="sem-btn" onclick="loadSemester(4)">Sem 4</button>
+            <button class="sem-btn" onclick="loadSemester(5)">Sem 5</button>
+            <button class="sem-btn" onclick="loadSemester(6)">Sem 6</button>
+            <button class="sem-btn" onclick="loadSemester(7)">Sem 7</button>
+            <button class="sem-btn" onclick="loadSemester(8)">Sem 8</button>
+            <button class="sem-btn" onclick="loadSemester(9)">Sem 9</button>
+            <button class="sem-btn" onclick="loadSemester(10)">Sem 10</button>
+        </div>
+
+        <div class="materials-grid" id="materialsGrid">
+            <!-- Example Material -->
+            <div class="glass-card material-card">
+                <div class="doc-icon">📄</div>
+                <div class="material-info">
+                    <h3>Computer Architecture Notes</h3>
+                    <p>PDF | 2.4 MB</p>
+                </div>
+                <a href="#" class="download-btn">Download</a>
+            </div>
+
+            <div class="glass-card material-card">
+                <div class="doc-icon">📄</div>
+                <div class="material-info">
+                    <h3>Database Systems Guide</h3>
+                    <p>PDF | 1.8 MB</p>
+                </div>
+                <a href="#" class="download-btn">Download</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <h4>DIDM Institute</h4>
+                <p>Empowering students through technology and quality education. Affiliated with Hemchandracharya North
+                    Gujarat University.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+                    <li><a href="study-material.html">Study Material</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <p>📍 DIDM Institute, Radhanpur Road, Mehsana</p>
+                <p>📞 +91 12345 67890</p>
+                <p>📧 info@didminstitute.edu.in</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dr. Indu Dayal Meshri Institute. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function loadSemester(sem) {
+            // Update active button
+            document.querySelectorAll('.sem-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // In a real app, this would fetch from /api/public/study-material/:sem
+            console.log("Loading semester " + sem);
+        }
+    </script>
+</body>
+
+</html>

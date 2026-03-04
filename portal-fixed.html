@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Dr. Indu Dayal Meshri Institute</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>DIDM Institute</h2>
+                <p class="subtitle">HNGU</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="study-material.html">Study Material</a></li>
+                <li><a href="portal.html" class="active">Student Portal</a></li>
+                <li><a href="updates.html">Updates</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container header-content">
+            <h1>Student <span>Portal</span></h1>
+            <p>Access your academic information and resources</p>
+        </div>
+    </section>
+
+    <!-- Portal Section -->
+    <section class="portal-section">
+        <div class="container">
+            <div class="portal-content">
+                <!-- Login Form -->
+                <div class="login-container">
+                    <div class="login-box">
+                        <h2 id="formTitle">Student <span>Login</span></h2>
+                        <div id="loginMessage"></div>
+                        
+                        <!-- Login Form -->
+                        <form id="loginForm" class="login-form">
+                            <div class="form-group">
+                                <label for="rollNumber">Roll Number / Enrollment ID</label>
+                                <input type="text" id="rollNumber" placeholder="Enter your roll number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" placeholder="Enter your password" required>
+                            </div>
+                            <div class="form-options">
+                                <label>
+                                    <input type="checkbox" id="rememberMe"> Remember me
+                                </label>
+                                <a href="#" class="forgot-password">Forgot Password?</a>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </form>
+                        
+                        <p class="form-footer" id="toggleFormText">Don't have an account? <a href="#"
+                                id="showRegister">Register here</a></p>
+                        <p class="form-footer" id="toggleLoginText" style="display:none;">Already have an account? <a
+                                href="#" id="showLogin">Login here</a></p>
+                        <p class="form-footer" id="adminLoginLink">Clerk/Staff? <a href="#" id="showAdminLogin">Admin
+                                Login</a></p>
+                        <p class="form-footer" id="studentLoginLink" style="display:none;">Student? <a href="#"
+                                id="showStudentLogin">Back to Student Login</a></p>
+                        
+                        <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e5e7eb;">
+                        <p style="text-align: center; font-size: 0.9rem; color: #9ca3af;">
+                            <strong>Demo Credentials</strong><br>
+                            Roll Number: CA01<br>
+                            Password: password123<br><br>
+                            Admin: trivedivedant2005@gmail.com<br>
+                            Password: A124@lok.
+                        </p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>New User?</h3>
+                        <p>If you are a new student and don't have login credentials, please contact the administration
+                            office or visit the front desk.</p>
+                        <h4>Required Documents for Registration:</h4>
+                        <ul>
+                            <li>Valid Student ID</li>
+                            <li>Enrollment Certificate</li>
+                            <li>Proof of Identity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Institute</h4>
+                    <p>Dr. Indu Dayal Meshri Institute of Computer Science & Technology is dedicated to providing
+                        quality education in computer science and IT.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="updates.html">Updates</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="YouTube">▶</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Dr. Indu Dayal Meshri Institute, HNGU. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Portal page loaded successfully!');
+            
+            // Mobile Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', function () {
+                    navMenu.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                });
+            }
+
+            // Login Form Variables
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const showRegister = document.getElementById('showRegister');
+            const showLogin = document.getElementById('showLogin');
+            const formTitle = document.getElementById('formTitle');
+            const toggleFormText = document.getElementById('toggleFormText');
+            const toggleLoginText = document.getElementById('toggleLoginText');
+
+            const showAdminLogin = document.getElementById('showAdminLogin');
+            const showStudentLogin = document.getElementById('showStudentLogin');
+            const adminLoginLink = document.getElementById('adminLoginLink');
+            const studentLoginLink = document.getElementById('studentLoginLink');
+            let is_admin_login = false;
+
+            console.log('All elements found:', {
+                loginForm: !!loginForm,
+                showAdminLogin: !!showAdminLogin,
+                showStudentLogin: !!showStudentLogin,
+                formTitle: !!formTitle
+            });
+
+            // Admin Login Toggle
+            if (showAdminLogin && showStudentLogin) {
+                showAdminLogin.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    console.log('Switching to admin login mode');
+                    is_admin_login = true;
+                    formTitle.textContent = 'Clerk/Admin Login';
+                    document.querySelector('label[for="rollNumber"]').textContent = 'Email Address';
+                    document.getElementById('rollNumber').placeholder = 'Enter your email';
+                    document.getElementById('rollNumber').type = 'email';
+                    adminLoginLink.style.display = 'none';
+                    studentLoginLink.style.display = 'block';
+                    toggleFormText.style.display = 'none';
+                });
+
+                showStudentLogin.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    console.log('Switching to student login mode');
+                    is_admin_login = false;
+                    formTitle.textContent = 'Student Login';
+                    document.querySelector('label[for="rollNumber"]').textContent = 'Roll Number';
+                    document.getElementById('rollNumber').placeholder = 'Enter your roll number';
+                    document.getElementById('rollNumber').type = 'text';
+                    adminLoginLink.style.display = 'block';
+                    studentLoginLink.style.display = 'none';
+                    toggleFormText.style.display = 'block';
+                });
+            }
+
+            // Login Form Handler
+            if (loginForm) {
+                loginForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+                    console.log('Form submitted!');
+                    
+                    const rollNumber = document.getElementById('rollNumber').value;
+                    const password = document.getElementById('password').value;
+                    const messageDiv = document.getElementById('loginMessage');
+                    const submitBtn = this.querySelector('button[type="submit"]');
+
+                    console.log('Login attempt:', {
+                        is_admin_login,
+                        rollNumber,
+                        password: password.substring(0, 3) + '***'
+                    });
+
+                    // Show loading state
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Logging in...';
+                    messageDiv.innerHTML = '';
+
+                    try {
+                        const API_URL = 'http://127.0.0.1:5000/api';
+                        const endpoint = is_admin_login ? 'auth/admin/login' : 'auth/login';
+                        const body = is_admin_login
+                            ? { email: rollNumber, password: password }
+                            : { roll_number: rollNumber, password: password };
+
+                        console.log('Sending request to:', `${API_URL}/${endpoint}`);
+                        console.log('Request body:', body);
+
+                        const response = await fetch(`${API_URL}/${endpoint}`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(body)
+                        });
+
+                        console.log('Response status:', response.status);
+                        const data = await response.json();
+                        console.log('Response data:', data);
+
+                        if (data.success) {
+                            // Save token to localStorage
+                            localStorage.setItem('studentToken', data.token);
+                            localStorage.setItem('studentData', JSON.stringify(data.student || data.admin));
+
+                            messageDiv.innerHTML = `
+                                <div style="background: #d1fae5; color: #065f46; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    ✓ Login successful! Welcome ${data.student ? data.student.name : data.admin.name}
+                                </div>
+                            `;
+
+                            // Role-based redirection
+                            setTimeout(() => {
+                                const userRole = data.admin ? data.admin.role : 'student';
+                                if (userRole === 'admin' || userRole === 'clerk' || userRole === 'super_admin') {
+                                    window.location.href = 'clerk-dashboard.html';
+                                } else {
+                                    window.location.href = 'dashboard.html';
+                                }
+                            }, 1500);
+                        } else {
+                            messageDiv.innerHTML = `
+                                <div style="background: #fee2e2; color: #991b1b; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    ✗ ${data.message}
+                                </div>
+                            `;
+                        }
+                    } catch (error) {
+                        messageDiv.innerHTML = `
+                            <div style="background: #fee2e2; color: #991b1b; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                ✗ Connection error: ${error.message}. <br>
+                                <small>Check if server is running at http://127.0.0.1:5000</small>
+                            </div>
+                        `;
+                        console.error('Full Login Error:', error);
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Login';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
